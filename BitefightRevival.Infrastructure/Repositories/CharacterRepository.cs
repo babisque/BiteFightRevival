@@ -16,6 +16,18 @@ public class CharacterRepository(ApplicationDbContext ctx) : ICharacterRepositor
         return await ctx.Characters
             .FirstOrDefaultAsync(character => character.UserId == userId, cancellationToken: cancellationToken);
     }
+    
+    public async Task<Character?> GetByNameAsync(string name, CancellationToken cancellationToken)
+    {
+        return await ctx.Characters
+            .FirstOrDefaultAsync(character => character.Name == name, cancellationToken: cancellationToken);
+    }
+    
+    public async Task CreateAsync(Character character, CancellationToken cancellationToken)
+    {
+        await ctx.Characters.AddAsync(character, cancellationToken);
+        await ctx.SaveChangesAsync(cancellationToken);
+    }
 
     public async Task UpdateAsync(Character character, CancellationToken cancellationToken)
     {

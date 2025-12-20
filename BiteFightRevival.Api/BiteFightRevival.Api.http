@@ -1,0 +1,6 @@
+@BiteFightRevival.Api_HostAddress = http://localhost:5139
+
+GET {{BiteFightRevival.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
