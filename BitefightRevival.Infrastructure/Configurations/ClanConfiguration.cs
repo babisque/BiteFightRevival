@@ -14,8 +14,11 @@ public class ClanConfiguration : IEntityTypeConfiguration<Clan>
         builder.Property(c => c.Tag).IsRequired().HasMaxLength(4);
         builder.Property(c => c.Description).HasMaxLength(500);
         builder.Property(c => c.Treasury).IsRequired().HasDefaultValue(0);
+        
         builder.HasMany(c => c.Characters)
             .WithOne(c => c.Clan)
             .HasForeignKey(c => c.ClanId);
+        
+        builder.Property(c => c.LeaderId).IsRequired();
     }
 }

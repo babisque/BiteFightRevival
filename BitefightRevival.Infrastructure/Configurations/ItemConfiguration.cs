@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BiteFightRevival.Infrastructure.Configurations;
 
-public class ItemCharacterConfiguration : IEntityTypeConfiguration<Item>
+public class ItemConfiguration : IEntityTypeConfiguration<Item>
 {
     public void Configure(EntityTypeBuilder<Item> builder)
     {
