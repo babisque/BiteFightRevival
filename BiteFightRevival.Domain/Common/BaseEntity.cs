@@ -22,6 +22,11 @@ public class BaseEntity
     {
         _domainEvents.Remove(domainEvent);
     }
+    
+    public void ClearDomainEvents()
+    {
+        _domainEvents.Clear();
+    }
 }
 
 public interface IDomainEvent { }

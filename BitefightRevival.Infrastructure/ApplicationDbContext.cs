@@ -27,13 +27,14 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     {
         var domainEntities = ChangeTracker
             .Entries<BaseEntity>()
-            .Where(x => x.Entity.DomainEvents != null && x.Entity.DomainEvents.Any());
+            .Where(x => x.Entity.DomainEvents.Count != 0)
+            .ToList();
 
         var domainEvents = domainEntities
             .SelectMany(x => x.Entity.DomainEvents)
             .ToList();
 
-        domainEntities.ToList().ForEach(entity => entity.Entity.DomainEvents.ToList().Clear());
+        domainEntities.ForEach(entry => entry.Entity.ClearDomainEvents());
 
         var result = await base.SaveChangesAsync(cancellationToken);
 
