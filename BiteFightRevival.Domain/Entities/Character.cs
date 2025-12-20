@@ -8,9 +8,9 @@ public class Character : BaseEntity
     public string Name { get; set; }
     public Race Race { get; set; }
     public int Level { get; set; } = 1;
-    public long Experience { get; set; } = 0;
-    public long Gold { get; set; } = 0;
-    public int Hellstones { get; set; } = 0;
+    public long Experience { get; set; }
+    public long Gold { get; set; }
+    public int Hellstones { get; set; }
 
     public int Strength { get; set; } = 10;
     public int Defense { get; set; } = 10;
