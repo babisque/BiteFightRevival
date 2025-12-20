@@ -31,5 +31,9 @@ public class BattleReportConfiguration : IEntityTypeConfiguration<BattleReport>
             .WithMany()
             .HasForeignKey(b => b.WinnerId)
             .OnDelete(DeleteBehavior.Restrict);
+        
+        builder.HasIndex(b => b.AttackerId);
+        builder.HasIndex(b => b.DefenderId);
+        builder.HasIndex(b => b.CreatedAt);
     }
 }
