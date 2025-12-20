@@ -26,4 +26,10 @@ public class Character : BaseEntity
     public Guid? ClanId { get; set; }
     public Clan Clan { get; set; }
     public ICollection<InventoryItem> Inventory { get; set; }
+
+    public void JoinClan(Guid clanId)
+    {
+        ClanId = clanId;
+        SetUpdatedAt();
+    }
 }

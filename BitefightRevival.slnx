@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="BiteFightRevival.Application/BiteFightRevival.Application.csproj" />
   <Project Path="BitefightRevival.Domain/BitefightRevival.Domain.csproj" />
   <Project Path="BiteFightRevival.Infrastructure/BiteFightRevival.Infrastructure.csproj" />
 </Solution>
