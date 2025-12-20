@@ -3,4 +3,4 @@ using MediatR;
 
 namespace BiteFightRevival.Application.Character.UseCases.CreateCharacter;
 
-public abstract record CreateCharacterCommand(string Name, Race Race, Guid UserId) : IRequest<Guid>;
+public record CreateCharacterCommand(string Name, Race Race, Guid UserId) : IRequest<Guid>;

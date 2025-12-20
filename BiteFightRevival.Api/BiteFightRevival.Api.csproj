@@ -12,6 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BiteFightRevival.Application\BiteFightRevival.Application.csproj" />
+      <ProjectReference Include="..\BiteFightRevival.Infrastructure\BiteFightRevival.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

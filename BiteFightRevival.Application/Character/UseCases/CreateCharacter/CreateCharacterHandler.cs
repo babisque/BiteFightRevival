@@ -13,13 +13,7 @@ public class CreateCharacterHandler(ICharacterRepository characterRepository) : 
         if (characterNameExists is null) 
             throw new Exception("Character name is already taken.");
 
-        var character = new Domain.Entities.Character
-        {
-            Id = Guid.NewGuid(),
-            Name = request.Name,
-            Race = request.Race,
-            UserId = request.UserId
-        };
+        var character = Domain.Entities.Character.Create(request.Name, request.Race, request.UserId);
         
         await characterRepository.CreateAsync(character, cancellationToken);
         return character.Id;
