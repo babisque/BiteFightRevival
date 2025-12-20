@@ -8,21 +8,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BiteFightRevival.Infrastructure;
 
-public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IPublisher publisher)
+    : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>(options)
 {
-    private readonly IPublisher _publisher;
-    
     public DbSet<Character> Characters { get; set; }
     public DbSet<Clan> Clans { get; set; }
     public DbSet<Item> Items { get; set; }
     public DbSet<InventoryItem> InventoryItems { get; set; }
     public DbSet<BattleReport> BattleReports { get; set; }
 
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IPublisher publisher) : base(options)
-    {
-        _publisher = publisher;
-    }
-    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -44,7 +38,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityR
         var result = await base.SaveChangesAsync(cancellationToken);
 
         foreach (var domainEvent in domainEvents)
-            await _publisher.Publish(domainEvent, cancellationToken);
+            await publisher.Publish(domainEvent, cancellationToken);
 
         return result;
     }
