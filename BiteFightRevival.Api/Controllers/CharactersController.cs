@@ -11,7 +11,7 @@ public class CharactersController(IMediator mediator) : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateCharacter(CreateCharacterCommand command)
     {
-        await mediator.Send(command);
-        return Ok();
+        var result = await mediator.Send(command);
+        return CreatedAtAction(nameof(CreateCharacter), new { id = result }, result);
     }
 }
