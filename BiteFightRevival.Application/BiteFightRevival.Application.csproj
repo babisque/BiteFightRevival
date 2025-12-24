@@ -2,10 +2,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BiteFightRevival.Domain\BiteFightRevival.Domain.csproj" />
+    <ProjectReference Include="..\BiteFightRevival.Infrastructure\BiteFightRevival.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="14.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="10.0.1" />
   </ItemGroup>
 
   <PropertyGroup>
