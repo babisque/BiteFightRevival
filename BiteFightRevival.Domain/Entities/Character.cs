@@ -32,4 +32,29 @@ public class Character : BaseEntity
         ClanId = clanId;
         SetUpdatedAt();
     }
+
+    private Character() { }
+
+    public static Character Create(string name, Race race, Guid userId)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+            throw new ArgumentException("Name cannot be empty.", nameof(name));
+
+        var character = new Character
+        {
+            Id = Guid.NewGuid(),
+            Name = name,
+            Race = race,
+            UserId = userId,
+
+            Level = 1,
+            CurrentHealth = 100,
+            MaxHealth = 100,
+            ActionPoints = 5,
+            Strength = race == Race.Werewolf ? 12 : 10,
+            Dexterity = race == Race.Vampire ? 12 : 10
+        };
+
+        return character;
+    }
 }
